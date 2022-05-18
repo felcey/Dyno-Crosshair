@@ -37,9 +37,7 @@ def CrossHair_Delay(self):
     Cur_M_Pos_X, Cur_M_Pos_Y = pyautogui.position()
 
     X_Percent = percentage(Cur_M_Pos_X, O_M_Pos_X)
-    Y_Percent = percentage(Cur_M_Pos_Y, O_M_Pos_Y)
-
-    
+    Y_Percent = percentage(Cur_M_Pos_Y, O_M_Pos_Y)    
 
     if O_M_Pos_Y == Cur_M_Pos_Y and O_M_Pos_X == Cur_M_Pos_X:
         if CrossHair_Pos_Y > CrossHair_Static_Pos_Y: 
@@ -100,7 +98,6 @@ class Crosshair(QtWidgets.QWidget):
         painter.drawLine(0, res, res - red, res)
         painter.drawLine(res + red, res, ws - 0.5, res)
         self.update()
-        time.sleep(0.01)
         CrossHair_Delay(self)
         if keyboard.is_pressed('ctrl+q'):
             Settings_Window()
@@ -130,7 +127,6 @@ def Settings_Window():
         global CrossHair_Speed
         global CrossHair_Tension
         global Crosshair_DeadZone_Value
-        global crosshaCrossHair_Tensionir_return
         CrossHair_Speed = int(crosshair_Speed_Settings.get())
         CrossHair_Tension = int(crosshair_Return_Speed.get())
         Crosshair_DeadZone_Value = int(Crosshair_Deadzone.get())
