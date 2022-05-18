@@ -81,7 +81,6 @@ class Crosshair(QtWidgets.QWidget):
         self.pen.setWidth(penWidth)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint | QtCore.Qt.WindowTransparentForInput)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        #Here need to try n make it move with mouse pos movements
         self.move(QtWidgets.QApplication.desktop().screen().rect().center() - self.rect().center() + QtCore.QPoint(1,1))
     def paintEvent(self, event):
         d = 3
