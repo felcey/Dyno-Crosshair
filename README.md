@@ -1,3 +1,3 @@
 # Dyno-Crosshair
-A small Dynamic Crosshair\n
+A small Dynamic Crosshair
 Just for fun
