@@ -148,7 +148,7 @@ def Settings_Window():
 
     Button(tab_Settings, text='Apply', command=Set_Cross_Settings).grid(row=2, column=0)
                                                                 #About tab layout
-    Label(tab_About, text="Just Because i can\nnxt line").grid(row=0, column=0)
+    Label(tab_About, text="Use Ctrl + arrow keys to adjust to position").grid(row=0, column=0)
     root.mainloop()
 
 app = QtWidgets.QApplication(sys.argv)
