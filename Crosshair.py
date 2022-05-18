@@ -126,6 +126,7 @@ def Settings_Window():
 
     def Set_Cross_Settings():
         global CrossHair_Speed
+        global CrossHair_Tension
         global crosshaCrossHair_Tensionir_return
         CrossHair_Speed = int(crosshair_Speed_Settings.get())
         CrossHair_Tension = int(crosshair_Return_Speed.get())
