@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 #Globals
 CrossHair_Speed = 10
 CrossHair_Tension = 4
+Crosshair_DeadZone_Value = 1
 CrossHair_Pos_X = 959
 CrossHair_Pos_Y = 539
 CrossHair_Static_Pos_X = 949
@@ -30,7 +31,7 @@ def CrossHair_Delay(self):
     global CrossHair_Tension
     global CrossHair_Static_Pos_X
     global CrossHair_Static_Pos_Y
-
+    global Crosshair_DeadZone_Value
     O_M_Pos_X, O_M_Pos_Y = pyautogui.position()
     time.sleep(0.01)
     Cur_M_Pos_X, Cur_M_Pos_Y = pyautogui.position()
@@ -38,24 +39,25 @@ def CrossHair_Delay(self):
     X_Percent = percentage(Cur_M_Pos_X, O_M_Pos_X)
     Y_Percent = percentage(Cur_M_Pos_Y, O_M_Pos_Y)
 
-    if O_M_Pos_Y == Cur_M_Pos_Y:
+    
+
+    if O_M_Pos_Y == Cur_M_Pos_Y and O_M_Pos_X == Cur_M_Pos_X:
         if CrossHair_Pos_Y > CrossHair_Static_Pos_Y: 
             self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
             CrossHair_Pos_Y = CrossHair_Pos_Y - CrossHair_Tension
 
         if CrossHair_Pos_Y < CrossHair_Static_Pos_Y:
             self.move(CrossHair_Static_Pos_X, CrossHair_Pos_Y)
-            CrossHair_Pos_Y = CrossHair_Pos_Y + CrossHair_Tension
+            CrossHair_Pos_Y = CrossHair_Pos_Y + CrossHair_Tension  
 
-    if O_M_Pos_X == Cur_M_Pos_X:
         if CrossHair_Pos_X > CrossHair_Static_Pos_X:
             self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
             CrossHair_Pos_X = CrossHair_Pos_X -  CrossHair_Tension
 
         if CrossHair_Pos_X < CrossHair_Static_Pos_X:
             self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
-            CrossHair_Pos_X = CrossHair_Pos_X + CrossHair_Tension
-    
+            CrossHair_Pos_X = CrossHair_Pos_X + CrossHair_Tension            
+
     if Cur_M_Pos_X > O_M_Pos_X:
         self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
         CrossHair_Pos_X = CrossHair_Pos_X - X_Percent
@@ -112,7 +114,7 @@ class Crosshair(QtWidgets.QWidget):
             CrossHair_Static_Pos_Y = CrossHair_Static_Pos_Y + 1
 
 def Settings_Window():
-    global CrossHair_Speed
+    #global CrossHair_Speed
     root = Tk()
     root.title("Mouse Settings")
     root.geometry("250x250")
@@ -127,9 +129,11 @@ def Settings_Window():
     def Set_Cross_Settings():
         global CrossHair_Speed
         global CrossHair_Tension
+        global Crosshair_DeadZone_Value
         global crosshaCrossHair_Tensionir_return
         CrossHair_Speed = int(crosshair_Speed_Settings.get())
         CrossHair_Tension = int(crosshair_Return_Speed.get())
+        Crosshair_DeadZone_Value = int(Crosshair_Deadzone.get())
         print(CrossHair_Speed)
                                                                 #setting tab layout
     #mouse Tension
@@ -144,8 +148,15 @@ def Settings_Window():
     crosshair_Return_Speed = Scale(tab_Settings, from_=1, to=100, orient=HORIZONTAL)
     crosshair_Return_Speed.grid(row=1, column=1)
     crosshair_Return_Speed.set(CrossHair_Tension)
+    
+    #Deadzone
+    Label(tab_Settings, text="Dead Zone :").grid(row=2, column=0)
+    Crosshair_Deadzone = Scale(tab_Settings, from_=1, to=100, orient=HORIZONTAL)
+    Crosshair_Deadzone.grid(row=2, column=1)
+    Crosshair_Deadzone.set(Crosshair_DeadZone_Value)
 
-    Button(tab_Settings, text='Apply', command=Set_Cross_Settings).grid(row=2, column=0)
+
+    Button(tab_Settings, text='Apply', command=Set_Cross_Settings).grid(row=3, column=0)
                                                                 #About tab layout
     Label(tab_About, text="Use Ctrl + arrow keys to adjust to position").grid(row=0, column=0)
     Label(tab_About, text="").grid(row=1, column=0)
