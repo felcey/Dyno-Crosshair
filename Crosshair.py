@@ -56,19 +56,19 @@ def CrossHair_Delay(self):
             CrossHair_Pos_X = CrossHair_Pos_X + CrossHair_Tension
     
     if Cur_M_Pos_X > O_M_Pos_X:
-        self.move(CrossHair_Pos_X - X_Percent, CrossHair_Pos_Y)
+        self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
         CrossHair_Pos_X = CrossHair_Pos_X - X_Percent
 
     if Cur_M_Pos_X < O_M_Pos_X:
-        self.move(CrossHair_Pos_X + X_Percent, CrossHair_Pos_Y)
+        self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
         CrossHair_Pos_X = CrossHair_Pos_X + X_Percent
 
     if Cur_M_Pos_Y > O_M_Pos_Y:
-        self.move(CrossHair_Pos_X, CrossHair_Pos_Y - Y_Percent)
+        self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
         CrossHair_Pos_Y = CrossHair_Pos_Y - Y_Percent
 
     if Cur_M_Pos_Y < O_M_Pos_Y:
-        self.move(CrossHair_Pos_X, CrossHair_Pos_Y + Y_Percent)
+        self.move(CrossHair_Pos_X, CrossHair_Pos_Y)
         CrossHair_Pos_Y = CrossHair_Pos_Y + Y_Percent
 
 class Crosshair(QtWidgets.QWidget):
