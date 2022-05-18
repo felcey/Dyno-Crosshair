@@ -1,3 +1,4 @@
+#Press Ctrl + q to bring up menu
 import sys
 import time
 import keyboard
@@ -101,8 +102,6 @@ class Crosshair(QtWidgets.QWidget):
         CrossHair_Delay(self)
         if keyboard.is_pressed('ctrl+q'):
             Settings_Window()
-            print(self.geometry()) 
-            print(self.frameGeometry()) 
         if keyboard.is_pressed('ctrl+left arrow'):
             CrossHair_Static_Pos_X = CrossHair_Static_Pos_X - 1
         if keyboard.is_pressed('ctrl+right arrow'):
